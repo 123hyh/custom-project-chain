@@ -2,9 +2,9 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:37:42
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-01 11:09:10
+ * @LastEditTime: 2021-02-02 11:01:17
  * @Description: 
- * @FilePath: \project-cli\config\utils.js
+ * @FilePath: \custom-project-chain\config\utils.js
  */
 const path = require('path');
 const webpack = require('webpack')
@@ -35,7 +35,8 @@ module.exports.bootstrap = (
 
 }
 
-const net = require('net')
+const net = require('net');
+
 /**
  * 获取端口
  * @param {*} port 
@@ -108,3 +109,13 @@ module.exports.getAssets = (assetPath) => ({
   }
 })
 
+/**
+ * 添加默认 minimizer 
+ * @description: 
+ * @param { * } defaultMinimizer
+ * @return {*}
+ */
+module.exports.defaultMinimizer = webpackConfig => {
+  webpackConfig.optimization.minimizer.unshift('...')
+  return webpackConfig
+}

@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development useCache=true node ./scripts/DEV.js",
-    "build:SIT": "cross-env NODE_ENV=production node ./scripts/SIT.js",
+    "build:SIT": "cross-env NODE_ENV=production env=SIT useCache=true webpack --config ./scripts/SIT.js",
     "build:analyzer": "cross-env NODE_ENV=production analyzer=true node ./scripts/SIT.js --analyzer"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "colors": "^1.4.0",
+    "core-js": "^3.8.3",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
     "css-minimizer-webpack-plugin": "^1.2.0",
@@ -44,5 +45,6 @@
     "webpack-chain": "^6.5.1",
     "webpack-cli": "^4.4.0",
     "webpack-dev-server": "^3.11.2"
-  }
+  },
+  "dependencies": {}
 }

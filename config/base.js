@@ -2,9 +2,9 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:37:42
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-01 11:07:23
+ * @LastEditTime: 2021-02-02 11:25:17
  * @Description: 
- * @FilePath: \project-cli\config\base.js
+ * @FilePath: \custom-project-chain\config\base.js
  */
 const Chain = require('webpack-chain');
 const { resolve, startLog, getAssets, getDataUrlParset } = require('./utils');
@@ -18,6 +18,8 @@ const {
   analyzer,
   /* 当前环境 */
   NODE_ENV,
+  /* 环境别名 */
+  env,
   /* 使用缓存 */
   useCache
 } = process.env
@@ -196,7 +198,7 @@ config
         scopedConfig.merge({
           cache: {
             type: 'filesystem',
-            name: `${scopedConfig.get('name')}_${NODE_ENV}`,
+            name: `${scopedConfig.get('name')}_${env || NODE_ENV}`,
             buildDependencies: {
               config: [__filename]
             }
@@ -225,17 +227,15 @@ config
   isDevelop,
   () => void 1,
   scopedConfig => {
+    
     /* Css 压缩 */
- /*    const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-    scopedConfig.merge({
-      optimization: {
-        minimize: true,
-        minimizer: [
-          // `...`,
-          new CssMinimizerPlugin(),
-        ],
-      }
-    }) */
+    const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+    scopedConfig.optimization
+      .minimize(true)
+      .minimizer('css')
+        .use( CssMinimizerPlugin)
+        .end()
+    .end()
 
     /* 可视化体积  */
     scopedConfig.when(
