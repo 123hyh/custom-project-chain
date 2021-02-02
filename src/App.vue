@@ -2,15 +2,15 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:49:35
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-01-27 17:50:31
+ * @LastEditTime: 2021-02-02 14:27:16
  * @Description: 
- * @FilePath: \project-cli\src\App.vue
+ * @FilePath: \custom-project-chain\src\App.vue
 -->
 
 <template>
   <div class="app-wrap">
     <h1>App.vue</h1>
-    <img :src="url" alt="" />
+    <img :src="url" alt="" data-index="1" data-inde2="1" />
   </div>
 </template>
 
