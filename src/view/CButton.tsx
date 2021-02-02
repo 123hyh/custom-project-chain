@@ -13,7 +13,10 @@ export default defineComponent({
   },
   setup(props) {
     return () => (
-      <button onClick={() => props.selfClick()}>打印次数{props.counter}</button>
+      <>
+        <button onClick={() => props.selfClick()}>打印</button>
+        <p>次数{props.counter}</p>
+      </>
     )
   }
 })
