@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:37:42
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 11:25:17
+ * @LastEditTime: 2021-02-02 13:53:58
  * @Description: 
  * @FilePath: \custom-project-chain\config\base.js
  */
@@ -11,6 +11,7 @@ const { resolve, startLog, getAssets, getDataUrlParset } = require('./utils');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack')
 startLog()
 const { name: PROJECT_NAME } = require(resolve('../package.json'))
 const {
@@ -227,7 +228,30 @@ config
   isDevelop,
   () => void 1,
   scopedConfig => {
-    
+    /* DLL */
+    scopedConfig
+      .plugin('dll')
+        .use(
+          webpack.DllReferencePlugin,
+          [
+            {
+              context: __dirname,
+              manifest: require('./dll/manifest.json')
+            }
+          ]
+        )
+        .end()
+       /*  .plugin('addAssetHtml')
+        .use(
+          require('add-asset-html-webpack-plugin'),
+          [
+            {
+              filepath: resolve('../scripts/dll/dll.js')
+            }
+          ]
+        )
+        .end()  */
+    .end()
     /* Css 压缩 */
     const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
     scopedConfig.optimization
