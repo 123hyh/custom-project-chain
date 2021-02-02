@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:49:35
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 17:06:01
+ * @LastEditTime: 2021-02-02 17:10:54
  * @Description: 
  * @FilePath: \custom-project-chain\src\App.vue
 -->
@@ -18,7 +18,7 @@
       data-inde5="1"    />
     <div></div>
   </div>
-</template>
+</template> 
 
 <script>
   const url = new URL('@/assets/images/Thymeleaf.png', import.meta.url)
