@@ -2,15 +2,15 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:37:42
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 20:33:47
- * @Description: 
+ * @LastEditTime: 2021-02-02 21:03:15
+ * @Description: webpack 基础配置
  * @FilePath: \custom-project-chain\config\base.js
  */
-const Chain = require('webpack-chain');
-const { resolve, startLog, getAssets, getDataUrlParset } = require('./utils');
+const Chain = require('webpack-chain')
+const { resolve, startLog, getAssets, getDataUrlParset } = require('./utils')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
 startLog()
 const { name: PROJECT_NAME } = require(resolve('../package.json'))
@@ -33,7 +33,7 @@ const isDevelop = NODE_ENV === 'development'
 /* 资源路径 */
 const STATIC_PATH = 'static'
 
-const config = new Chain();
+const config = new Chain()
 
 config
   .name(PROJECT_NAME)
@@ -42,210 +42,179 @@ config
   .entry('index')
   .add(resolve('../src/main.ts'))
   .end()
-  .output
-    .path(resolve('../dist'))
-    .publicPath('/')
-    .library('customer_project')
-    .libraryTarget('window')
-    .filename(`${STATIC_PATH}/js/[name]${isDevelop ? '' : '.[contenthash]'}.bundle.js`)
-    .chunkFilename(`${STATIC_PATH}/js/[name]${isDevelop ? '' : '.[chunkhash]'}.chunk.js`)
+  .output.path(resolve('../dist'))
+  .publicPath('/')
+  .library('customer_project')
+  .libraryTarget('window')
+  .filename(
+    `${STATIC_PATH}/js/[name]${isDevelop ? '' : '.[contenthash]'}.bundle.js`
+  )
+  .chunkFilename(
+    `${STATIC_PATH}/js/[name]${isDevelop ? '' : '.[chunkhash]'}.chunk.js`
+  )
   .end()
   /* 路径别名 */
-  .resolve
-    .alias
-      .set('@', resolve('../src'))
-    .end()
-    .extensions
-      .add('.js')
-      .add('.ts')
-      .add('.vue')
-    .end()
+  .resolve.alias.set('@', resolve('../src'))
   .end()
-  .module
-
-  /* JS rule */
+  .extensions.add('.js')
+  .add('.ts')
+  .add('.vue')
+  .end()
+  .end()
+  .module /* JS rule */
   .rule('js-rule')
   .test(/\.js$/i)
   .use('babel')
-    .loader('babel-loader')
-    .end()
+  .loader('babel-loader')
+  .end()
   .end()
 
   /* typescript */
   .rule('typescript')
-    .test(/\.tsx?$/i)
-    .use('babel')
-    .loader('babel-loader')
-    .end()
-    .use('tscompile')
-    .loader('ts-loader')
-    .options({
-      transpileOnly: true
-    })
-    .end()
+  .test(/\.tsx?$/i)
+  .use('babel')
+  .loader('babel-loader')
+  .end()
+  .use('tscompile')
+  .loader('ts-loader')
+  .options({
+    transpileOnly: true
+  })
+  .end()
   .end()
 
   /* VUE rule */
   .rule('vue')
-    .test(/\.vue$/i)
-    .use('vueloader')
-      .loader('vue-loader')
-      .end()
-    .end()
+  .test(/\.vue$/i)
+  .use('vueloader')
+  .loader('vue-loader')
+  .end()
+  .end()
 
   /* CSS rule */
   .rule('css')
-    .test(/\.css$/i)
-      .use('styleLoader')
-        .loader( isDevelop ? 'vue-style-loader' : MiniCssExtractPlugin.loader )
-        .end()
-      .use('cssLoader')
-        .loader('css-loader')
-        .options({
-          esModule: false
-        })
-        .end()
-      .use('postcssLoader')
-        .loader('postcss-loader') 
-        .end()
-    .end()
+  .test(/\.css$/i)
+  .use('styleLoader')
+  .loader(isDevelop ? 'vue-style-loader' : MiniCssExtractPlugin.loader)
+  .end()
+  .use('cssLoader')
+  .loader('css-loader')
+  .options({
+    esModule: false
+  })
+  .end()
+  .use('postcssLoader')
+  .loader('postcss-loader')
+  .end()
+  .end()
 
-  /* SCSS rule */ 
+  /* SCSS rule */
   .rule('sass')
-    .test(/\.s[ac]ss$/i)
-      .use('styleLoader')
-        .loader( isDevelop ? 'vue-style-loader' : MiniCssExtractPlugin.loader )
-      .end()
-      .use('cssLoader')
-        .loader('css-loader')
-        .options({
-          esModule: false
-        })
-        .end()
-      .use('postcssLoader')
-        .loader('postcss-loader')
-        .end()
-      .use('sassLoader')
-        .loader('sass-loader')
-        .end()
-      .use('sassVariable')
-        .loader('sass-resources-loader')
-        .options({
-          resources:[
-            resolve('../src/styles/variable.scss')
-          ]
-        })
-        .end()
-      .end()
+  .test(/\.s[ac]ss$/i)
+  .use('styleLoader')
+  .loader(isDevelop ? 'vue-style-loader' : MiniCssExtractPlugin.loader)
+  .end()
+  .use('cssLoader')
+  .loader('css-loader')
+  .options({
+    esModule: false
+  })
+  .end()
+  .use('postcssLoader')
+  .loader('postcss-loader')
+  .end()
+  .use('sassLoader')
+  .loader('sass-loader')
+  .end()
+  .use('sassVariable')
+  .loader('sass-resources-loader')
+  .options({
+    resources: [resolve('../src/styles/variable.scss')]
+  })
+  .end()
+  .end()
 
-      /* 图片 */
-      .rule('image')
-        .test(/\.(png|svg|jpg|jpeg|gif)$/i,)
-        .type('asset')
-        .parser(
-          getDataUrlParset()
-        )
-        .merge(
-          getAssets('images')
-        )
-        .exclude
-        .add(resolve('../src/assets/svgs/icons'))
-        .end()
-      .end()
+  /* 图片 */
+  .rule('image')
+  .test(/\.(png|svg|jpg|jpeg|gif)$/i)
+  .type('asset')
+  .parser(getDataUrlParset())
+  .merge(getAssets('images'))
+  .exclude.add(resolve('../src/assets/svgs/icons'))
+  .end()
+  .end()
 
-      /* 字体 */
-      .rule('font')
-        .test(/\.(woff2?|eot|ttf|otf)$/i)
-        .type('asset')
-        .parser(
-          getDataUrlParset()
-        )
-        .merge(
-          getAssets('fonts')
-        )
-      .end()
+  /* 字体 */
+  .rule('font')
+  .test(/\.(woff2?|eot|ttf|otf)$/i)
+  .type('asset')
+  .parser(getDataUrlParset())
+  .merge(getAssets('fonts'))
+  .end()
 
-      /* 媒体资源 */
-      .rule('media')
-        .test(/\.(mp4|webm|ogg|mp3|wav|flac|aac)$/i)
-        .type('asset')
-        .parser(
-          getDataUrlParset()
-        )
-        .merge(
-          getAssets('medias')
-        )
-      .end()
-      
-      /* SVG 图标 */
-      .rule('svg_icon')
-        .include
-          .add(resolve('../src/assets/svgs/icons'))
-        .end()
-        .test(/\.svg$/i)
-        .use('svgLoader')
-          .loader('svg-sprite-loader')
-          .options({
-            symbolId: `icon-[name]-[contentHash]`
-          })
-        .end()
-      .end()
-    .end()
+  /* 媒体资源 */
+  .rule('media')
+  .test(/\.(mp4|webm|ogg|mp3|wav|flac|aac)$/i)
+  .type('asset')
+  .parser(getDataUrlParset())
+  .merge(getAssets('medias'))
+  .end()
 
-    /* 缓存 */
-    .when(
-      useCache === 'true',
-      scopedConfig => {
-        scopedConfig.merge({
-          cache: {
-            type: 'filesystem',
-            name: `${scopedConfig.get('name')}_${env || NODE_ENV}`,
-            buildDependencies: {
-              config: [__filename]
-            }
-          }
-        })
+  /* SVG 图标 */
+  .rule('svg_icon')
+  .include.add(resolve('../src/assets/svgs/icons'))
+  .end()
+  .test(/\.svg$/i)
+  .use('svgLoader')
+  .loader('svg-sprite-loader')
+  .options({
+    symbolId: `icon-[name]-[contentHash]`
+  })
+  .end()
+  .end()
+  .end()
+
+  /* 缓存 */
+  .when(useCache === 'true', scopedConfig => {
+    scopedConfig.merge({
+      cache: {
+        type: 'filesystem',
+        name: `${scopedConfig.get('name')}_${env || NODE_ENV}`,
+        buildDependencies: {
+          config: [__filename]
+        }
       }
-    )
-/* HTML 插件 */
-.plugin(
-  'html-template'
-)
-  .use(
-    HtmlWebpackPlugin,
-    [
-      { 
-        template: 'public/index.html',
-        filename: 'index.html',
-        chunks: ['index'] ,
-      }
-    ]
-  )
-.end()
-/* Vue 插件 */
-.plugin(
-  'vuePlugin'
-)
+    })
+  })
+  /* HTML 插件 */
+  .plugin('html-template')
+  .use(HtmlWebpackPlugin, [
+    {
+      template: 'public/index.html',
+      filename: 'index.html',
+      chunks: ['index']
+    }
+  ])
+  .end()
+  /* Vue 插件 */
+  .plugin('vuePlugin')
   .use(VueLoaderPlugin)
-.end()
-.when(
-  isDevelop,
-  () => void 1,
-  scopedConfig => {
-    /* DLL */
+  .end()
+  .when(
+    isDevelop,
+    () => void 1,
+    scopedConfig => {
+      /* DLL */
       scopedConfig
-      .plugin('dll')
-        .use(
-          webpack.DllReferencePlugin,
-          [
-            {
-              context: __dirname,
-              manifest: require('./dll/manifest.json')
-            }
-          ]
-        )
-        .end();
-        /*
+        .plugin('dll')
+        .use(webpack.DllReferencePlugin, [
+          {
+            context: __dirname,
+            manifest: require('./dll/manifest.json')
+          }
+        ])
+        .end()
+      /*
       .plugin('addAssetHtml')
         .use(
           require('add-asset-html-webpack-plugin'),
@@ -257,38 +226,32 @@ config
         )
         .end()  
     .end()*/
-    /* Css 压缩 */
-    const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-    scopedConfig.optimization
-      .minimize(true)
-      .minimizer('css')
-        .use( CssMinimizerPlugin)
+      /* Css 压缩 */
+      const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+      scopedConfig.optimization
+        .minimize(true)
+        .minimizer('css')
+        .use(CssMinimizerPlugin)
         .end()
-    .end()
+        .end()
 
-    /* 可视化体积  */
-    scopedConfig.when(
-      analyzer === 'true',
-      _scopedConfig => {
-        _scopedConfig.plugin('analyzer')
-          .use(
-            require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-          )
-      }
-    )
-    /* 打包进度条 */
-    scopedConfig.plugin('progress')
-      .use(require('progress-bar-webpack-plugin')) 
-    .end()
-    /* 样式抽离 */
-    .plugin('MiniCssExtractPlugin')
-      .use(MiniCssExtractPlugin,[
-        {
-          filename: `${STATIC_PATH}/styles/[name].[contenthash].bundle.css`,
-          chunkFilename: `${STATIC_PATH}/styles/[name].[contenthash].chunk.css`,
-        }
-      ])
-    .end()
-})
+      /* 可视化体积  */
+      scopedConfig.when(analyzer === 'true', _scopedConfig => {
+        _scopedConfig
+          .plugin('analyzer')
+          .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+      })
+      scopedConfig
+        /* 样式抽离 */
+        .plugin('MiniCssExtractPlugin')
+        .use(MiniCssExtractPlugin, [
+          {
+            filename: `${STATIC_PATH}/styles/[name].[contenthash].bundle.css`,
+            chunkFilename: `${STATIC_PATH}/styles/[name].[contenthash].chunk.css`
+          }
+        ])
+        .end()
+    }
+  )
 
 module.exports = config

@@ -2,8 +2,8 @@
  * @Author: huangyuhui
  * @Date: 2021-02-02 11:30:15
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 13:31:16
- * @Description:
+ * @LastEditTime: 2021-02-02 20:39:21
+ * @Description: webpack build dll
  * @FilePath: \custom-project-chain\scripts\DLL.js
  */
 const path = require('path')
