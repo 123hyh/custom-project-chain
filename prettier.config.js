@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-02-02 13:55:04
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 13:55:12
+ * @LastEditTime: 2021-02-02 19:43:30
  * @Description:
  * @FilePath: \custom-project-chain\prettier.config.js
  */
@@ -17,8 +17,9 @@ module.exports = {
   trailingComma: 'es5',
   bracketSpacing: true,
   jsxBracketSameLine: false,
-  arrowParens: 'always',
+  arrowParens: 'avoid',
   htmlWhitespaceSensitivity: 'ignore',
   vueIndentScriptAndStyle: true,
   endOfLine: 'lf',
+  trailingComma: 'none'
 }

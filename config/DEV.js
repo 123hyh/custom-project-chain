@@ -2,9 +2,9 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:37:42
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-01-27 16:33:19
+ * @LastEditTime: 2021-02-02 18:20:14
  * @Description: 
- * @FilePath: \project-cli\config\DEV.js
+ * @FilePath: \custom-project-chain\config\DEV.js
  */
 const config = require('./base')
 const { resolve, getIPAdress } = require('./utils');
@@ -38,7 +38,20 @@ const getDevConfig = ({ port = 8080 }) => {
           }
         }
       ]
-    );
+    )
+    .end()
+      /* eslint */
+    .plugin('eslint')
+      .use(
+        require('eslint-webpack-plugin'),
+        [
+          {
+            extensions: ['js','ts','vue','json'],
+            emitError: true,
+          }
+        ]
+      )
+    .end()
   return config.toConfig()
 }
 module.exports = getDevConfig

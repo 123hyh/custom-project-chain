@@ -11,18 +11,18 @@ const webpack = require('webpack')
 const dllDir = '../config/dll'
 module.exports = {
   entry: {
-    dll: ['vue'],
+    dll: ['vue']
   },
   mode: 'production',
   output: {
     path: path.join(__dirname, dllDir),
     filename: '[name].js',
-    library: '[name]_[fullhash]',
+    library: '[name]_[fullhash]'
   },
   plugins: [
     new webpack.DllPlugin({
       path: path.join(__dirname, dllDir, 'manifest.json'),
-      name: '[name]_[fullhash]',
-    }),
-  ],
+      name: '[name]_[fullhash]'
+    })
+  ]
 }

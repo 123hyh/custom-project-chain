@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:49:35
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 17:47:29
+ * @LastEditTime: 2021-02-02 20:28:19
  * @Description: 
  * @FilePath: \custom-project-chain\src\App.vue
 -->
@@ -25,20 +25,15 @@
 
 <script>
   const url = new URL('@/assets/images/Thymeleaf.png', import.meta.url)
-  console.log(isOne)
   export default {
     name: 'Application',
     data: () => ({
-      url,
-    }),
+      url
+    })
   }
 </script>
 
 <style lang="scss">
-  @font-face {
-    font-family: FZCYJ;
-    src: url('@/assets/fonts/element-icons.woff');
-  }
   .app-wrap {
     color: $text-href-color;
   }

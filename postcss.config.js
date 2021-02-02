@@ -7,5 +7,5 @@
  * @FilePath: \project-cli\postcss.config.js
  */
 module.exports = {
-  plugins: [require('autoprefixer')],
+  plugins: [require('autoprefixer')]
 }

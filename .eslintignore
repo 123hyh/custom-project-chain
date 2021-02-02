@@ -1,5 +1,9 @@
 dist/*
 node_modules/*
 public/*
+scripts/*
 config/*
 .eslintrc.js
+postcss.config.js
+prettier.config.js
+shims.d.ts
