@@ -2,14 +2,14 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:37:42
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 21:31:35
+ * @LastEditTime: 2021-02-02 21:39:04
  * @Description: webpack 基础配置
  * @FilePath: \custom-project-chain\config\base.js
  */
 const Chain = require('webpack-chain')
 const { resolve, startLog, getAssets, getDataUrlParset } = require('./utils')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/dist/plugin').default
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
 startLog()
@@ -192,14 +192,15 @@ config
     {
       template: 'public/index.html',
       filename: 'index.html',
-      chunks: ['index']
+      chunks: ['index'],
+      inject: true
     }
   ])
   .end()
   /* Vue 插件 */
-  /* .plugin('vuePlugin')
-    .use(VueLoaderPlugin)
-  .end() */
+  .plugin('vuePlugin')
+  .use(VueLoaderPlugin)
+  .end()
   .when(
     isDevelop,
     () => void 1,
