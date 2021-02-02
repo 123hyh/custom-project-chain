@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:49:35
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 21:19:21
+ * @LastEditTime: 2021-02-02 21:32:58
  * @Description: 
  * @FilePath: \custom-project-chain\src\App.vue
 -->
@@ -24,14 +24,15 @@
 </template>
 
 <script>
+  import { defineComponent } from 'vue'
   const url = new URL('@/assets/images/Thymeleaf.png', import.meta.url)
   console.log(2)
-  export default {
+  export default defineComponent({
     name: 'Application',
     data: () => ({
       url
     })
-  }
+  })
 </script>
 
 <style lang="scss">

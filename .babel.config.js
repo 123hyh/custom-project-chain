@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-02-02 10:18:27
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 21:09:12
+ * @LastEditTime: 2021-02-02 21:21:43
  * @Description:
  * @FilePath: \custom-project-chain\.babel.config.js
  */
@@ -19,5 +19,6 @@ module.exports = {
       }
     ],
     '@babel/preset-typescript'
-  ]
+  ],
+  plugins: ['@vue/babel-plugin-jsx']
 }
