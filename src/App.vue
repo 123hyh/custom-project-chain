@@ -22,7 +22,7 @@
 
 <script>
   const url = new URL('@/assets/images/Thymeleaf.png', import.meta.url)
-  const isOne = 1 ==  1
+  const isOne = 1 ==   1
 
   console.log(isOne)
   export default {
