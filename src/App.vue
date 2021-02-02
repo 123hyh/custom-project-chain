@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:49:35
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 17:16:08
+ * @LastEditTime: 2021-02-02 17:47:29
  * @Description: 
  * @FilePath: \custom-project-chain\src\App.vue
 -->
@@ -25,8 +25,6 @@
 
 <script>
   const url = new URL('@/assets/images/Thymeleaf.png', import.meta.url)
-  const isOne = 1 === 1
-
   console.log(isOne)
   export default {
     name: 'Application',

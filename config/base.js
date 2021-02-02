@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:37:42
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 13:53:58
+ * @LastEditTime: 2021-02-02 17:46:09
  * @Description: 
  * @FilePath: \custom-project-chain\config\base.js
  */
@@ -226,10 +226,26 @@ config
 .end()
 .when(
   isDevelop,
-  () => void 1,
+  scopedConfig => {
+    /* eslint */
+    const ESLintPlugin = require('eslint-webpack-plugin');
+    scopedConfig
+      .plugin('eslint')
+        .use(
+          ESLintPlugin,
+          [
+            {
+              extensions: ['js','ts','vue','json'],
+              emitError: true,
+            }
+          ]
+        )
+      .end()
+    .end()
+  },
   scopedConfig => {
     /* DLL */
-    scopedConfig
+    /*  scopedConfig
       .plugin('dll')
         .use(
           webpack.DllReferencePlugin,
@@ -241,7 +257,7 @@ config
           ]
         )
         .end()
-       /*  .plugin('addAssetHtml')
+      .plugin('addAssetHtml')
         .use(
           require('add-asset-html-webpack-plugin'),
           [
@@ -250,8 +266,8 @@ config
             }
           ]
         )
-        .end()  */
-    .end()
+        .end()  
+    .end()*/
     /* Css 压缩 */
     const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
     scopedConfig.optimization
