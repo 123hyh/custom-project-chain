@@ -13,5 +13,5 @@ import App from './App.vue'
 import 'normalize.css'
 import './styles/global.scss'
 
-const app = createApp(App)
+const app = createApp(App as any)
 app.mount('#app')

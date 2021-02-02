@@ -13,6 +13,9 @@ const VueLoaderPlugin = require('vue-loader/dist/plugin').default
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
 startLog()
+
+/* 指定 babel 编译 */
+const BABEL_INCLUDES = [resolve('../src')]
 const { name: PROJECT_NAME } = require(resolve('../package.json'))
 const {
   /* 查看打包体积 */
@@ -40,7 +43,7 @@ config
   .target('web')
   .mode(NODE_ENV)
   .entry('index')
-  .add(resolve('../src/main.ts'))
+  .add(resolve('../src/main.tsx'))
   .end()
   .output.path(resolve('../dist'))
   .publicPath('/')
@@ -58,12 +61,15 @@ config
   .end()
   .extensions.add('.js')
   .add('.ts')
+  .add('.tsx')
   .add('.vue')
   .end()
   .end()
   .module /* JS rule */
   .rule('js-rule')
-  .test(/\.js$/i)
+  .test(/\.jsx?$/i)
+  .include.merge(BABEL_INCLUDES)
+  .end()
   .use('babel')
   .loader('babel-loader')
   .end()

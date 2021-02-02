@@ -6,17 +6,16 @@
  * @Description:
  * @FilePath: \custom-project-chain\src\view\Home.tsx
  */
-import { defineComponent } from 'vue'
-
+import { defineComponent, ref } from 'vue'
+import CButton from './CButton'
 export default defineComponent({
   setup() {
+    const state = ref(0)
     function click() {
-      console.log(1)
+      state.value += 1
     }
     return () => (
-      <div>
-        <button onClick={() => click()}>打印</button>
-      </div>
+      <CButton counter={state.value} selfClick={() => click()}></CButton>
     )
   }
 })
