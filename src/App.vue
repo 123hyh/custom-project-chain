@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:49:35
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 21:18:35
+ * @LastEditTime: 2021-02-02 21:19:21
  * @Description: 
  * @FilePath: \custom-project-chain\src\App.vue
 -->
@@ -25,6 +25,7 @@
 
 <script>
   const url = new URL('@/assets/images/Thymeleaf.png', import.meta.url)
+  console.log(2)
   export default {
     name: 'Application',
     data: () => ({
