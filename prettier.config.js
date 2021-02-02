@@ -3,7 +3,7 @@
  * @Date: 2021-02-02 13:55:04
  * @LastEditors: huangyuhui
  * @LastEditTime: 2021-02-02 13:55:12
- * @Description: 
+ * @Description:
  * @FilePath: \custom-project-chain\prettier.config.js
  */
 module.exports = {

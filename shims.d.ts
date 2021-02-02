@@ -3,19 +3,16 @@
  * @Date: 2021-01-27 17:58:34
  * @LastEditors: huangyuhui
  * @LastEditTime: 2021-01-27 18:03:06
- * @Description: 
+ * @Description:
  * @FilePath: \project-cli\shims.d.ts
  */
 
-
 declare module '*.vue' {
+  import Vue from 'vue' // 引用了type和value
 
-  import Vue from 'vue';  // 引用了type和value
+  //( value是Vue构造器 type是Vue interface)
 
-//( value是Vue构造器 type是Vue interface)
-
-  export default Vue;
-
+  export default Vue
 }
 
-declare module '*.scss';
+declare module '*.scss'
