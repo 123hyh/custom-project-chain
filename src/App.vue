@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:49:35
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 15:03:40
+ * @LastEditTime: 2021-02-02 17:01:26
  * @Description: 
  * @FilePath: \custom-project-chain\src\App.vue
 -->
@@ -13,18 +13,18 @@
     <img
       :src="url"
       alt=""
-      data-index="1"
-      data-inde2="1"
-      data-inde3="1"
-      data-inde4="1"
-      data-inde5="1"
-    />
+      data-index="1"      data-inde2="1"
+      data-inde3="1"      data-inde4="1"
+      data-inde5="1"    />
+    <div></div>
   </div>
 </template>
 
 <script>
   const url = new URL('@/assets/images/Thymeleaf.png', import.meta.url)
+  const isOne = 1 == 1
 
+  console.log(isOne)
   export default {
     name: 'Application',
     data: () => ({
