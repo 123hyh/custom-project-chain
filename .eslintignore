@@ -7,3 +7,5 @@ config/*
 postcss.config.js
 prettier.config.js
 shims.d.ts
+.babel.config.js
+vue3.md
