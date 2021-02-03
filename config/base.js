@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:37:42
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 21:39:04
+ * @LastEditTime: 2021-02-03 17:53:44
  * @Description: webpack 基础配置
  * @FilePath: \custom-project-chain\config\base.js
  */
@@ -43,7 +43,7 @@ config
   .target('web')
   .mode(NODE_ENV)
   .entry('index')
-  .add(resolve('../src/main.tsx'))
+  .add(resolve('../src/bootstrap.tsx'))
   .end()
   .output.path(resolve('../dist'))
   .publicPath('/')
@@ -106,6 +106,7 @@ config
   .use('cssLoader')
   .loader('css-loader')
   .options({
+    /* .vue 使用样式时 必须关闭 */
     esModule: false
   })
   .end()
@@ -113,7 +114,34 @@ config
   .loader('postcss-loader')
   .end()
   .end()
-
+  /* LESS rule */
+  .rule('less')
+  .test(/\.less$/i)
+  .include/* ant-design-vue 使用less */
+  .add(/node_modules([\\]+|\/)(?=ant-design-vue)/)
+  .end()
+  .use('styleLoader')
+  .loader(isDevelop ? 'vue-style-loader' : MiniCssExtractPlugin.loader)
+  .end()
+  .use('cssLoader')
+  .loader('css-loader')
+  .options({
+    /* .vue 使用样式时 必须关闭 */
+    esModule: false
+  })
+  .end()
+  .use('postcssLoader')
+  .loader('postcss-loader')
+  .end()
+  .use('lessLoader')
+  .loader('less-loader')
+  .options({
+    lessOptions: {
+      javascriptEnabled: true
+    }
+  })
+  .end()
+  .end()
   /* SCSS rule */
   .rule('sass')
   .test(/\.s[ac]ss$/i)

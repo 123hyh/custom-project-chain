@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 17:58:34
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 20:12:15
+ * @LastEditTime: 2021-02-03 12:13:03
  * @Description:
  * @FilePath: \custom-project-chain\shims.d.ts
  */
@@ -14,8 +14,9 @@ declare module '*.vue' {
 
   export default Vue
 }
+declare module '*.module.scss' {
+  const styles: { readonly [prop: string]: string }
+  export default styles
+}
 
 declare module '*.scss'
-interface Window {
-  vm: Vue
-}

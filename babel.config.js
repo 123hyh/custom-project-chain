@@ -2,9 +2,9 @@
  * @Author: huangyuhui
  * @Date: 2021-02-02 10:18:27
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 22:00:49
+ * @LastEditTime: 2021-02-03 17:25:27
  * @Description:
- * @FilePath: \custom-project-chain\.babel.config.js
+ * @FilePath: \custom-project-chain\babel.config.js
  */
 module.exports = {
   presets: [
@@ -20,5 +20,16 @@ module.exports = {
     ],
     '@babel/preset-typescript'
   ],
-  plugins: [['@vue/babel-plugin-jsx', { mergeProps: false }]]
+  plugins: [
+    /* antd 按需加载 */
+    [
+      'import',
+      {
+        libraryName: 'ant-design-vue',
+        libraryDirectory: 'es',
+        style: true
+      }
+    ],
+    ['@vue/babel-plugin-jsx', { mergeProps: false }]
+  ]
 }
