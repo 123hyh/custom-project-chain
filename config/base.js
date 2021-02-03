@@ -117,7 +117,7 @@ config
   /* LESS rule */
   .rule('less')
   .test(/\.less$/i)
-  .include/* ant-design-vue 使用less */
+  .include /* ant-design-vue 使用less */
   .add(/node_modules([\\]+|\/)(?=ant-design-vue)/)
   .end()
   .use('styleLoader')
