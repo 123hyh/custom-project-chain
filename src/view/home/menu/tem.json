@@ -1,0 +1,36 @@
+[
+  {
+    "title": "客户管理",
+    "menuCode": "/customer",
+    "children": [
+      {
+        "title": "客户备案",
+        "menuCode": "/record"
+      },
+      {
+        "title": "客户立项",
+        "menuCode": "/projectApproval"
+      },
+      {
+        "title": "结算方案",
+        "menuCode": "/settlementschama"
+      },
+      {
+        "title": "合同审批",
+        "menuCode": "/contractApproval"
+      }
+    ]
+  },
+  {
+    "title": "供应链管理",
+    "children": []
+  },
+  {
+    "title": "关务管理",
+    "children": []
+  },
+  {
+    "title": "财务管理",
+    "children": []
+  }
+]
