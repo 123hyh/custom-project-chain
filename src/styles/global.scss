@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 13:55:46
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-03 16:39:54
+ * @LastEditTime: 2021-02-03 18:21:33
  * @Description: 全局样式
  * @FilePath: \custom-project-chain\src\styles\global.scss
  */
@@ -12,4 +12,8 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: auto;
+}
+#app{
+  width: 100%;
+  height: 100%;
 }
