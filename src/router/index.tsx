@@ -2,40 +2,13 @@
  * @Author: huangyuhui
  * @Date: 2021-02-04 14:08:35
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-02-04 22:50:16
- * @Description:
+ * @LastEditTime: 2021-02-04 23:11:00
+ * @Description: 路由
  * @FilePath: \custom-project-chain\src\router\index.tsx
  */
-import { defineComponent } from 'vue'
-import { createRouter, RouteRecordRaw, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import { registerRouterHooks } from './hooks'
-const Home = defineComponent(() => {
-  return () => <div>Home1</div>
-})
-const About = defineComponent(() => () => <div>About</div>)
-
-const routes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    name: 'home',
-    component: () =>
-      import(
-        /* webpackChunkName: "home" */
-        '../view/home'
-      ),
-    children: [
-      {
-        path: '',
-        component: Home
-      },
-      {
-        path: '/about',
-        component: About
-      }
-    ]
-  }
-]
-
+import routes from './routes'
 export default registerRouterHooks(
   createRouter({
     history: createWebHistory(),

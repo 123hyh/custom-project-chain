@@ -1,8 +1,8 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-02-03 18:06:29
- * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-04 19:43:29
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-02-04 23:11:23
  * @Description: 菜单组件
  * @FilePath: \custom-project-chain\src\view\home\Menu\index.tsx
  */
@@ -57,14 +57,14 @@ const collapsed = ref(false)
 export const MenuCollapsed = defineComponent(() => () => (
   <>
     {collapsed.value ? (
-      <MenuFoldOutlined
+      <MenuUnfoldOutlined
         onClick={() => {
           collapsed.value = false
         }}
         class={$style.icon_base}
       />
     ) : (
-      <MenuUnfoldOutlined
+      <MenuFoldOutlined
         onClick={() => {
           collapsed.value = true
         }}
