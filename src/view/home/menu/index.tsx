@@ -65,7 +65,9 @@ export const MenuCollapsed = defineComponent(() => () => (
       />
     ) : (
       <MenuUnfoldOutlined
-        onClick={() => {collapsed.value = true}}
+        onClick={() => {
+          collapsed.value = true
+        }}
         class={$style.icon_base}
       />
     )}

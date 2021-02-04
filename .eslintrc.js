@@ -1,9 +1,9 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-02-04 20:03:59
- * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-04 20:05:53
- * @Description: 
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-02-04 23:05:28
+ * @Description:
  * @FilePath: \custom-project-chain\.eslintrc.js
  */
 module.exports = {
@@ -33,6 +33,8 @@ module.exports = {
     require: true
   },
   rules: {
+    /* typescript 类型 误报 */
+    '@typescript-eslint/no-unused-vars': 'error',
     eqeqeq: ['error', 'always'],
     'dot-location': ['error', 'property'],
     'no-unused-vars': 'error',
@@ -74,6 +76,6 @@ module.exports = {
       {
         enforceForRenamedProperties: false
       }
-    ],
+    ]
   }
 }
