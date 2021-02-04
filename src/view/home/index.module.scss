@@ -155,11 +155,11 @@ $tabshgt: $headerHeight;
       background: #dee1e6 !important;
       @extend __tabs_item_bg;
       :global(.anticon-close) {
-        display: inline-block;
+        visibility: visible;
       }
     }
     :global(.anticon-close) {
-      display: none;
+      visibility: hidden;
     }
   }
   :global(.ant-tabs-tab-active) {
