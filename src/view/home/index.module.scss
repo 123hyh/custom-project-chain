@@ -1,30 +1,184 @@
-.home {
+__flex-layout {
   display: flex;
-  flex: auto;
+  flex-wrap: wrap;
 }
-.__bespread {
+__text_color {
+  color: #fff;
+}
+.home {
+  @extend __flex-layout;
+}
+__bespread {
   width: 100%;
 }
 .layout {
-  @extend .__bespread;
-  background-color: #f0f2f5;
+  @extend __bespread, __flex-layout;
 }
+$headerHeight: 50px;
 .header {
-  height: 50px;
+  @extend __bespread, __text_color;
+  height: $headerHeight;
   background-color: #fff;
   box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+  background-color: #1890ff !important;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+.logo {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  > a {
+    @extend __text_color;
+  }
 }
 .footer {
-  @extend .__bespread;
+  @extend __bespread;
+}
+
+__menu_bg {
+  background: linear-gradient(90deg, #006cff, #399efd) !important;
+}
+
+__hover_menu {
+  @extend __text_color;
+  background: #399efd !important;
+}
+$menu_width: 250px;
+.not_collapsed {
+  flex-basis: $menu_width;
+}
+.is_collapsed {
+  :global(.ant-menu-submenu-title .anticon),
+  :global(.ant-menu-item .anticon) {
+    font-size: 20px !important;
+  }
 }
 
 .menu {
   margin: 0;
   padding: 0;
-  flex: 0 1 250px;
-  height: 100vh;
+  height: calc(100vh - #{$headerHeight});
   user-select: none;
+  @extend __menu_bg;
+  max-width: $menu_width;
+}
+.menu_sub_title {
+  color: #fff;
+}
+
+/* 菜单弹窗 样式 */
+.submen_open {
+  :global(.ant-menu-sub) {
+    @extend __menu_bg, __text_color;
+    :global(.ant-menu-item):hover,
+    :global(.ant-menu-item-selected) {
+      @extend __hover_menu;
+    }
+  }
+}
+
+.sub_menu {
+  :global(.ant-menu-sub) {
+    @extend __text_color;
+    @extend __menu_bg;
+  }
+
+  :global(.ant-menu-submenu-title):active,
+  :global(.ant-menu-item):hover,
+  :global(.ant-menu-submenu-title):hover {
+    @extend __hover_menu;
+  }
+  :global(.ant-menu-item-selected) {
+    @extend __hover_menu;
+  }
+  :global(.ant-menu-item),
+  :global(.ant-menu-submenu-title) {
+    height: 50px !important;
+    line-height: 50px !important;
+  }
+  :global(.ant-menu-submenu-arrow) {
+    &::after,
+    &::before {
+      background-image: linear-gradient(to right, #fff, #fff) !important;
+    }
+  }
+}
+.content_wrap {
+  flex: 1 1;
+  position: relative;
+  background-color: #f0f2f5;
+  height: 100%;
+  overflow: hidden;
+}
+
+__tabs_item_bg {
+  mask: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAAkBAMAAAAdqzmBAAAAMFBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlTPQ5AAAAD3RSTlMAr3DvEM8wgCBA379gj5//tJBPAAAAnUlEQVRIx2NgAAM27fj/tAO/xBsYkIHyf9qCT8iWMf6nNQhAsk2f5rYheY7Dnua2/U+A28ZEe8v+F9Ax2v7/F4DbxkUH2wzgtvHTwbYPo7aN2jZq26hto7aN2jZq25Cy7Qvctnw62PYNbls9HWz7S8/G6//PsI6H4396gAUQy1je08W2jxDbpv6nD4gB2uWp+J9eYPsEhv/0BPS1DQBvoBLVZ3BppgAAAABJRU5ErkJggg==);
+  mask-size: 100% 100%;
+}
+$tabshgt: $headerHeight;
+.tabs {
+  width: 100%;
+  height: $tabshgt;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 20px;
+  :global(.ant-tabs-card) {
+    box-sizing: border-box;
+    margin-top: 10px;
+    flex: 1;
+  }
+  :global(.ant-tabs-bar) {
+    margin: 0;
+    border-bottom: none !important;
+    padding: 0 30px 0 30px !important;
+  }
+  :global(.ant-tabs-tab) {
+    &::before {
+      display: none;
+    }
+    border: none !important;
+    margin-right: 0 !important;
+  }
+  :global(.ant-tabs-tab:not(.ant-tabs-tab-active)) {
+    background: #fff !important;
+    border: none !important;
+    transition: none !important;
+    &:hover {
+      color: #515a6e !important;
+      background: #dee1e6 !important;
+      @extend __tabs_item_bg;
+      :global(.anticon-close) {
+        display: inline-block;
+      }
+    }
+    :global(.anticon-close) {
+      display: none;
+    }
+  }
+  :global(.ant-tabs-tab-active) {
+    @extend __tabs_item_bg;
+    background: #e8f4ff !important;
+  }
+}
+.down {
+  flex: 0 0 60px;
+}
+.down_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 .main {
-  margin: 20px;
+  min-height: calc(100% - #{$tabshgt});
+  padding: 20px;
+  box-sizing: border-box;
+}
+.icon_base {
+  cursor: pointer;
+  font-size: 20px;
 }

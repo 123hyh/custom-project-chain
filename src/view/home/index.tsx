@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-02-02 21:51:21
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-03 18:49:13
+ * @LastEditTime: 2021-02-04 11:14:53
  * @Description: 主页
  * @FilePath: \custom-project-chain\src\view\home\index.tsx
  */
@@ -16,9 +16,9 @@ export default defineComponent({
   setup() {
     return () => (
       <section class={$style.home}>
-        <JMenu></JMenu>
+        <JHeader></JHeader>
         <div class={$style.layout}>
-          <JHeader></JHeader>
+          <JMenu></JMenu>
           <JMain></JMain>
           <JFooter></JFooter>
         </div>

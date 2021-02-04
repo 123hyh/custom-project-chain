@@ -1,9 +1,9 @@
 /*
  * @Author: huangyuhui
- * @Date: 2021-02-02 15:30:03
+ * @Date: 2021-02-04 20:03:59
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 20:23:42
- * @Description:
+ * @LastEditTime: 2021-02-04 20:05:53
+ * @Description: 
  * @FilePath: \custom-project-chain\.eslintrc.js
  */
 module.exports = {
@@ -62,7 +62,6 @@ module.exports = {
     'no-plusplus': 'error',
     'no-unneeded-ternary': 'warn',
     'no-whitespace-before-property': 'warn',
-    'object-property-newline': 'warn',
     'no-dupe-class-members': 'error',
     'no-this-before-super': 'error',
     'constructor-super': 'error',
@@ -75,6 +74,6 @@ module.exports = {
       {
         enforceForRenamedProperties: false
       }
-    ]
+    ],
   }
 }
