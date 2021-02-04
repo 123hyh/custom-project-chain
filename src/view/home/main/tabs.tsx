@@ -1,8 +1,8 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-02-04 11:31:51
- * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-04 20:07:09
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-02-04 22:53:17
  * @Description:
  * @FilePath: \custom-project-chain\src\view\home\main\tabs.tsx
  */
@@ -12,8 +12,8 @@ import { Tabs, Dropdown, Menu } from 'ant-design-vue'
 import { DownOutlined } from '@ant-design/icons-vue'
 import $style from '../index.module.scss'
 import { useRouter } from 'vue-router'
-type DataType = { title: string; key: string };
-type FilterType = (data: DataType , index: number ) => boolean;
+type DataType = { title: string; key: string }
+type FilterType = (data: DataType, index: number) => boolean
 export default defineComponent({
   setup() {
     const router = useRouter()
@@ -65,10 +65,8 @@ export default defineComponent({
     }) {
       const { tabPans, activeKey } = state
       const currentIndex = tabPans.findIndex(item => item.key === activeKey)
-      const filter = (
-        cb: FilterType
-      ) => tabPans.filter(cb)
-      
+      const filter = (cb: FilterType) => tabPans.filter(cb)
+
       const data = {
         left: filter((_item: unknown, index: number) => index >= currentIndex),
         right: filter((_item: unknown, index: number) => index <= currentIndex),
@@ -123,8 +121,8 @@ export default defineComponent({
             }}
           </Dropdown>
         ) : (
-            ''
-          )}
+          ''
+        )}
       </div>
     )
   }

@@ -1,13 +1,13 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-02-04 14:08:35
- * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-04 19:35:51
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-02-04 22:50:16
  * @Description:
  * @FilePath: \custom-project-chain\src\router\index.tsx
  */
 import { defineComponent } from 'vue'
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, RouteRecordRaw, createWebHistory } from 'vue-router'
 import { registerRouterHooks } from './hooks'
 const Home = defineComponent(() => {
   return () => <div>Home1</div>
@@ -38,7 +38,7 @@ const routes: RouteRecordRaw[] = [
 
 export default registerRouterHooks(
   createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes
   })
 )
