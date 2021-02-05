@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:37:42
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 20:38:31
+ * @LastEditTime: 2021-02-05 20:04:17
  * @Description: 处理 webpack的 工具函数
  * @FilePath: \custom-project-chain\config\utils.js
  */
@@ -120,4 +120,21 @@ module.exports.getAssets = assetPath => ({
 module.exports.defaultMinimizer = webpackConfig => {
   webpackConfig.optimization.minimizer.unshift('...')
   return webpackConfig
+}
+
+/**
+ * 生成 proxy
+ * @description:
+ * @param {*} prefix
+ * @param {*} proxyURI
+ * @return {*}
+ */
+module.exports.generatePorxy = function generatePorxy(prefix, proxyURI) {
+  return {
+    target: proxyURI,
+    changeOrigin: true,
+    pathRewrite: {
+      [`^/${prefix.replace('/', '')}`]: ''
+    }
+  }
 }
