@@ -1,8 +1,8 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-02-04 14:08:45
- * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-05 16:15:56
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-02-05 23:08:58
  * @Description: 路由钩子
  * @FilePath: \custom-project-chain\src\router\hooks.ts
  */
@@ -18,7 +18,7 @@ const progressBar = new QProgress({
 /**
  * 当前路由实例
  */
-let currentRoute: Router | null = null
+let currentRouter: Router | null = null
 
 /**
  * 追加路由item
@@ -26,7 +26,7 @@ let currentRoute: Router | null = null
  * @param route
  */
 export function addRoute(route: RouteRecordRaw) {
-  currentRoute?.addRoute(route)
+  currentRouter?.addRoute(route)
 }
 
 /**
@@ -34,14 +34,14 @@ export function addRoute(route: RouteRecordRaw) {
  */
 export function addPermisstionRoute() {
   addRoute(permissionRoute)
-  currentRoute?.removeRoute('login')
+  currentRouter?.removeRoute('login')
 }
 /**
  * 删除 权限路由
  */
 export function removePermisstionRoute() {
   baseRoutes.forEach(addRoute)
-  currentRoute?.removeRoute('home')
+  currentRouter?.removeRoute('home')
 }
 /**
  * 注册 路由钩子
@@ -49,7 +49,7 @@ export function removePermisstionRoute() {
  */
 export function registerRouterHooks(router: Router) {
   /* 修改路由 add 方法 */
-  currentRoute = router
+  currentRouter = router
   /* 初始化时判断是否登录 */
   if (isLogined()) {
     addPermisstionRoute()
@@ -64,4 +64,21 @@ export function registerRouterHooks(router: Router) {
     progressBar.finish()
   })
   return router
+}
+/**
+ * 刷新当前路由
+ */
+export function refreshCurrentRoute() {
+  const currentRoute = currentRouter?.currentRoute
+  const { fullPath = '/' } = currentRoute?.value ?? {}
+  currentRouter
+    ?.replace({
+      path: '/refresh',
+      state: {
+        back: fullPath
+      }
+    })
+    .finally(() => {
+      currentRouter?.replace(fullPath)
+    })
 }
