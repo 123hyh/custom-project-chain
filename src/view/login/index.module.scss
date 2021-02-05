@@ -8,18 +8,18 @@
   align-items: center;
 }
 
-.user_wrap{
+.user_wrap {
   border-radius: 10px;
   background-color: #fff;
   padding: 30px;
   box-sizing: border-box;
   width: 300px;
-  :global(.ant-form){
+  :global(.ant-form) {
     display: flex;
     flex-wrap: wrap;
-    :global(.ant-form-item){
+    :global(.ant-form-item) {
       flex: 1 1 100%;
-      :global(.ant-form-item-control-wrapper){
+      :global(.ant-form-item-control-wrapper) {
         width: 100%;
       }
     }
