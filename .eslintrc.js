@@ -1,8 +1,8 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-02-04 20:03:59
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-02-04 23:05:28
+ * @LastEditors: huangyuhui
+ * @LastEditTime: 2021-02-05 11:55:12
  * @Description:
  * @FilePath: \custom-project-chain\.eslintrc.js
  */

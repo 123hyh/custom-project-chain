@@ -1,15 +1,15 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-02-04 11:31:51
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-02-04 22:53:17
+ * @LastEditors: huangyuhui
+ * @LastEditTime: 2021-02-05 10:38:05
  * @Description:
  * @FilePath: \custom-project-chain\src\view\home\main\tabs.tsx
  */
 import { defineComponent, reactive } from 'vue'
 import { MenuCollapsed } from '../menu'
 import { Tabs, Dropdown, Menu } from 'ant-design-vue'
-import { DownOutlined } from '@ant-design/icons-vue'
+import { AppstoreOutlined } from '@ant-design/icons-vue'
 import $style from '../index.module.scss'
 import { useRouter } from 'vue-router'
 type DataType = { title: string; key: string }
@@ -100,10 +100,9 @@ export default defineComponent({
             {{
               default: () => (
                 <div class={$style.down}>
-                  <a class={$style.down_title}>
-                    更多
-                    <DownOutlined />
-                  </a>
+                  <AppstoreOutlined
+                    class={[$style.down_title, $style.icon_base]}
+                  />
                 </div>
               ),
               overlay: () => (

@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-02-04 23:09:33
- * @LastEditTime: 2021-02-05 00:20:59
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-02-05 10:51:22
+ * @LastEditors: huangyuhui
  * @Description: 路由选项
- * @FilePath: /custom-chain-cli/src/router/routes.ts
+ * @FilePath: \custom-project-chain\src\router\routes.tsx
  */
 import { defineComponent } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
@@ -17,9 +17,7 @@ const notFound = {
       '../view/notFound'
     )
 }
-const Home = defineComponent(() => {
-  return () => <div>Home1</div>
-})
+
 const About = defineComponent(() => () => <div>About</div>)
 /**
  * 权限路由
@@ -36,7 +34,11 @@ export const permissionRoute: RouteRecordRaw = {
     {
       path: '',
       name: 'home',
-      component: Home
+      component: () =>
+        import(
+          /* webpackChunkName: "projectList-com" */
+          '../view/projectList'
+        )
     },
     {
       path: '/about',

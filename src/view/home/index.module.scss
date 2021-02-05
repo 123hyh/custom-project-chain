@@ -183,4 +183,8 @@ $tabshgt: $headerHeight;
 .icon_base {
   cursor: pointer;
   font-size: 20px;
+  transition: color 0.2s linear;
+  &:hover {
+    color: #1890ff;
+  }
 }

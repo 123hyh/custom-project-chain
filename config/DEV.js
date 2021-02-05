@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:37:42
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-02 21:00:19
+ * @LastEditTime: 2021-02-05 11:42:26
  * @Description: 开发环境 配置
  * @FilePath: \custom-project-chain\config\DEV.js
  */
@@ -21,7 +21,13 @@ const getDevConfig = ({ port = 8080 }) => {
     .progress(true)
     .quiet(true)
     .useLocalIp(true)
-
+    .proxy({
+      '/api': {
+        target: 'http://192.168.0.133:8087',
+        changeOrigin: true,
+        pathRewrite: { '^/api': '' }
+      }
+    })
   config
     .plugin('dev-log')
     .use(require('@soda/friendly-errors-webpack-plugin'), [
