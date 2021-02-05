@@ -1,14 +1,15 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-02-04 14:08:45
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-02-05 00:19:35
+ * @LastEditors: huangyuhui
+ * @LastEditTime: 2021-02-05 16:15:56
  * @Description: 路由钩子
  * @FilePath: \custom-project-chain\src\router\hooks.ts
  */
 import { Router, RouteRecordRaw } from 'vue-router'
 import QProgress from 'qier-progress'
 import baseRoutes, { permissionRoute } from './routes'
+import { isLogined } from '@/utils/system'
 const progressBar = new QProgress({
   minimum: 0.08,
   height: 3,
@@ -19,24 +20,6 @@ const progressBar = new QProgress({
  */
 let currentRoute: Router | null = null
 
-/**
- * 注册 路由钩子
- * @param router
- */
-export function registerRouterHooks(router: Router) {
-  /* 修改路由 add 方法 */
-  currentRoute = router
-
-  /* 注册 加载Bar */
-  router.beforeEach((_to, _form, next) => {
-    progressBar.start()
-    next()
-  })
-  router.afterEach(() => {
-    progressBar.finish()
-  })
-  return router
-}
 /**
  * 追加路由item
  * @param router
@@ -59,4 +42,26 @@ export function addPermisstionRoute() {
 export function removePermisstionRoute() {
   baseRoutes.forEach(addRoute)
   currentRoute?.removeRoute('home')
+}
+/**
+ * 注册 路由钩子
+ * @param router
+ */
+export function registerRouterHooks(router: Router) {
+  /* 修改路由 add 方法 */
+  currentRoute = router
+  /* 初始化时判断是否登录 */
+  if (isLogined()) {
+    addPermisstionRoute()
+  }
+  /* 注册 加载Bar */
+  router.beforeEach((_to, _form, next) => {
+    progressBar.start()
+    next()
+  })
+
+  router.afterEach(() => {
+    progressBar.finish()
+  })
+  return router
 }

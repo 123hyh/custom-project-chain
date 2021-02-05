@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-02-02 20:29:54
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-05 11:40:56
+ * @LastEditTime: 2021-02-05 15:14:34
  * @Description: 全局变量
  * @FilePath: \custom-project-chain\src\global.variable.ts
  */

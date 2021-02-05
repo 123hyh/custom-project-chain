@@ -1,13 +1,16 @@
 /*
  * @Author: your name
  * @Date: 2021-02-04 23:09:33
- * @LastEditTime: 2021-02-05 10:51:22
+ * @LastEditTime: 2021-02-05 18:07:26
  * @LastEditors: huangyuhui
  * @Description: 路由选项
  * @FilePath: \custom-project-chain\src\router\routes.tsx
  */
 import { defineComponent } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
+/**
+ * 404
+ */
 const notFound = {
   path: '/:pathMatch(.*)*',
   name: 'notFound',
@@ -17,7 +20,16 @@ const notFound = {
       '../view/notFound'
     )
 }
-
+/**
+ * 刷新
+ */
+const refresh: RouteRecordRaw = {
+  path: 'refresh',
+  name: 'refresh',
+  component: defineComponent(() => {
+    return () => <div></div>
+  })
+}
 const About = defineComponent(() => () => <div>About</div>)
 /**
  * 权限路由
@@ -44,6 +56,7 @@ export const permissionRoute: RouteRecordRaw = {
       path: '/about',
       component: About
     },
+    refresh,
     notFound
   ]
 }

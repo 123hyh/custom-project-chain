@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-02-04 11:31:51
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-05 10:38:05
+ * @LastEditTime: 2021-02-05 15:48:08
  * @Description:
  * @FilePath: \custom-project-chain\src\view\home\main\tabs.tsx
  */
@@ -50,7 +50,7 @@ export default defineComponent({
      */
     function onChange(activeKey: string) {
       const n = +activeKey
-      router.push(n % 2 === 0 ? '/about' : '/')
+      router.push(n % 2 === 0 ? '/refresh' : '/')
     }
     /**
      * 点击下拉菜单
