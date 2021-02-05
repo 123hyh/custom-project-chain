@@ -78,7 +78,7 @@
   "lint-staged": {
     "*.{js,jsx,css,md,vue,ts,tsx,html}": [
       "prettier --write ./src",
-      "eslint ./src"
+      "eslint"
     ]
   },
   "repository": "https://github.com/123hyh/custom-project-chain.git"

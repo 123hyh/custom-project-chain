@@ -1,8 +1,8 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-02-05 10:44:17
- * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-05 16:00:01
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-02-05 23:14:18
  * @Description:
  * @FilePath: \custom-project-chain\src\view\projectList\index.tsx
  */
@@ -11,7 +11,7 @@ import { Table, Button } from 'ant-design-vue'
 import { getProjectList } from '@/services/projectApproval'
 import { projectListItem } from './po'
 import { ColumnProps } from 'ant-design-vue/lib/table/interface'
-import { useRouter } from 'vue-router'
+import { refreshCurrentRoute } from '@/router/hooks'
 
 type itemType = ReturnType<typeof projectListItem>
 
@@ -37,13 +37,12 @@ export default defineComponent(() => {
     const data = await getProjectList<itemType>()
     state.data = data.rows
   }
-  const router = useRouter()
   getList()
   return () => (
     <>
       <Button
         onClick={() => {
-          router.replace('/refresh')
+          refreshCurrentRoute()
         }}
       >
         刷新

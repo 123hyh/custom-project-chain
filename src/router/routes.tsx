@@ -1,13 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-02-04 23:09:33
- * @LastEditTime: 2021-02-05 18:07:26
- * @LastEditors: huangyuhui
+ * @LastEditTime: 2021-02-05 23:16:01
+ * @LastEditors: Please set LastEditors
  * @Description: 路由选项
  * @FilePath: \custom-project-chain\src\router\routes.tsx
  */
 import { defineComponent } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
+import { refreshCurrentRoute } from './hooks'
 /**
  * 404
  */
@@ -26,11 +27,11 @@ const notFound = {
 const refresh: RouteRecordRaw = {
   path: 'refresh',
   name: 'refresh',
-  component: defineComponent(() => {
-    return () => <div></div>
-  })
+  component: defineComponent(() => false)
 }
-const About = defineComponent(() => () => <div>About</div>)
+const About = defineComponent(() => {
+  return () => <div onClick={() => refreshCurrentRoute()}>刷新</div>
+})
 /**
  * 权限路由
  */

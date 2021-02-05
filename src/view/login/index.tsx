@@ -1,13 +1,13 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-02-04 23:07:08
- * @LastEditTime: 2021-02-05 15:39:36
- * @LastEditors: huangyuhui
+ * @LastEditTime: 2021-02-05 22:07:57
+ * @LastEditors: Please set LastEditors
  * @Description: 登录页面
  * @FilePath: \custom-project-chain\src\view\login\index.tsx
  */
 import $style from './index.module.scss'
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
 import { Button, Input, Form } from 'ant-design-vue'
 import { addPermisstionRoute } from '@/router/hooks'
 import { useRouter } from 'vue-router'
@@ -21,6 +21,7 @@ const placeholders = {
 
 export default defineComponent(() => {
   const router = useRouter()
+  const loading = ref(false)
   const state = reactive({
     /**
      * 用户名
@@ -58,10 +59,12 @@ export default defineComponent(() => {
    * 登录方法
    */
   async function goLogin() {
+    loading.value = true
     await validate()
     addPermisstionRoute()
     setLogin(true)
-    router.replace('/')
+    await router.replace('/')
+    loading.value = false
   }
 
   return () => (
@@ -83,7 +86,12 @@ export default defineComponent(() => {
             ></Input.Password>
           </Form.Item>
         </Form>
-        <Button block type="primary" onClick={() => goLogin()}>
+        <Button
+          loading={loading.value}
+          block
+          type="primary"
+          onClick={() => goLogin()}
+        >
           登录
         </Button>
       </div>
