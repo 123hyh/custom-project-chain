@@ -8,8 +8,8 @@
     "build:SIT": "cross-env NODE_ENV=production env=SIT useCache=true webpack --config ./scripts/SIT.js",
     "build:analyzer": "cross-env NODE_ENV=production analyzer=true webpack --config ./scripts/SIT.js",
     "build:DLL": "cross-env NODE_ENV=production  webpack --config ./scripts/DLL.js",
-    "formatCode": "prettier --write .",
-    "lint":"eslint ./src"
+    "format": "prettier --write .",
+    "lint": "eslint ./src"
   },
   "keywords": [],
   "author": "huangyuhui <310515005@qq.com>",
@@ -43,6 +43,7 @@
     "mini-css-extract-plugin": "^1.3.4",
     "normalize.css": "^8.0.1",
     "postcss": "^8.2.4",
+    "postcss-custom-properties": "^11.0.0",
     "postcss-loader": "^4.2.0",
     "qier-progress": "^1.0.4",
     "sass": "^1.32.5",
@@ -78,7 +79,7 @@
   "lint-staged": {
     "*.{js,jsx,css,md,vue,ts,tsx,html}": [
       "prettier --write .",
-      "eslint"
+      "eslint --no-ignore"
     ]
   },
   "repository": "https://github.com/123hyh/custom-project-chain.git"

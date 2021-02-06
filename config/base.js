@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:37:42
  * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-03 17:53:44
+ * @LastEditTime: 2021-02-06 17:39:22
  * @Description: webpack 基础配置
  * @FilePath: \custom-project-chain\config\base.js
  */
@@ -227,7 +227,9 @@ config
       template: 'public/index.html',
       filename: 'index.html',
       chunks: ['index'],
-      inject: true
+      inject: true,
+      title: 'vue-tsx-cli',
+      favicon: resolve('../public/favicon.ico')
     }
   ])
   .end()

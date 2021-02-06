@@ -1,8 +1,8 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-02-05 10:44:17
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-02-05 23:14:18
+ * @LastEditors: huangyuhui
+ * @LastEditTime: 2021-02-06 18:58:15
  * @Description:
  * @FilePath: \custom-project-chain\src\view\projectList\index.tsx
  */
@@ -12,6 +12,7 @@ import { getProjectList } from '@/services/projectApproval'
 import { projectListItem } from './po'
 import { ColumnProps } from 'ant-design-vue/lib/table/interface'
 import { refreshCurrentRoute } from '@/router/hooks'
+import { faultTolerant } from '@/services'
 
 type itemType = ReturnType<typeof projectListItem>
 
@@ -33,10 +34,12 @@ export default defineComponent(() => {
     ],
     data: []
   })
+
   async function getList() {
-    const data = await getProjectList<itemType>()
-    state.data = data.rows
+    const [, result] = await faultTolerant(() => getProjectList<itemType>())
+    state.data = result?.rows ?? []
   }
+
   getList()
   return () => (
     <>
