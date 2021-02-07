@@ -4,7 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "prevdev":"yarn install",
     "dev": "cross-env NODE_ENV=development useCache=true node ./scripts/DEV.js",
+    "server":"yarn dev",
     "build:SIT": "cross-env NODE_ENV=production env=SIT useCache=true webpack --config ./scripts/SIT.js",
     "build:analyzer": "cross-env NODE_ENV=production analyzer=true webpack --config ./scripts/SIT.js",
     "build:DLL": "cross-env NODE_ENV=production  webpack --config ./scripts/DLL.js",

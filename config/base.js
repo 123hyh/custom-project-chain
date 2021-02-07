@@ -1,8 +1,8 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-01-27 11:37:42
- * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-06 17:39:22
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-02-07 11:53:14
  * @Description: webpack 基础配置
  * @FilePath: \custom-project-chain\config\base.js
  */
@@ -163,7 +163,7 @@ config
   .use('sassVariable')
   .loader('sass-resources-loader')
   .options({
-    resources: [resolve('../src/styles/variable.scss')]
+    resources: [resolve('../src/styles/common.scss')]
   })
   .end()
   .end()
