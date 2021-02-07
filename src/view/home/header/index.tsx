@@ -1,8 +1,8 @@
 /*
  * @Author: huangyuhui
  * @Date: 2021-02-03 18:07:12
- * @LastEditors: huangyuhui
- * @LastEditTime: 2021-02-06 17:02:15
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-02-07 12:59:16
  * @Description:
  * @FilePath: \custom-project-chain\src\view\home\header\index.tsx
  */
@@ -12,7 +12,7 @@ import { defineComponent } from 'vue'
 import { LogoutOutlined, SyncOutlined } from '@ant-design/icons-vue'
 import { Popconfirm } from 'ant-design-vue'
 import { setLogin } from '@/utils/system'
-import { useRouter } from 'vue-router'
+import { useRouter, RouterLink } from 'vue-router'
 import { refreshCurrentRoute, removePermisstionRoute } from '@/router/hooks'
 export default defineComponent(() => {
   const router = useRouter()
@@ -29,7 +29,9 @@ export default defineComponent(() => {
   return () => (
     <header class={$style.header}>
       <div class={$style.logo}>
-        <a href=""> JiaYu Admin Pro </a>
+        <RouterLink to="/">
+          <span title="点击回到首页">JiaYu Admin Pro</span>
+        </RouterLink>
       </div>
       <div class={$headStyle.right_wrap}>
         <SyncOutlined

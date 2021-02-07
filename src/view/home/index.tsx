@@ -2,7 +2,7 @@
  * @Author: huangyuhui
  * @Date: 2021-02-02 21:51:21
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-02-05 22:19:33
+ * @LastEditTime: 2021-02-07 13:16:52
  * @Description: 主页
  * @FilePath: \custom-project-chain\src\view\home\index.tsx
  */
@@ -16,11 +16,11 @@ export default defineComponent({
   setup() {
     return () => (
       <section class={$style.home}>
-        <JHeader></JHeader>
+        <JHeader />
         <div class={$style.layout}>
-          <JMenu></JMenu>
-          <JMain></JMain>
-          <JFooter></JFooter>
+          <JMenu />
+          <JMain />
+          <JFooter />
         </div>
       </section>
     )

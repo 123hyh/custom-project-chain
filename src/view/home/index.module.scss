@@ -93,11 +93,13 @@ $menu_width: 250px;
   }
   :global(.ant-menu-item-selected) {
     @extend __hover_menu;
+    font-size: 17px !important;
   }
   :global(.ant-menu-item),
   :global(.ant-menu-submenu-title) {
     height: 50px !important;
     line-height: 50px !important;
+    transition: font-size .2s linear;
   }
   :global(.ant-menu-submenu-arrow) {
     &::after,
